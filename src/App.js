@@ -4,6 +4,7 @@ import PrivateRoute from "./components/PrivateRoute";
 import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
 import Dashboard from "./components/Dashboard";
 import NotFound from "./pages/NotFound";
+import "./themify-icons.css";
 function App() {
     return (
         <BrowserRouter>

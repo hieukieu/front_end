@@ -34,11 +34,13 @@ export const Option = styled.option`
 `;
 
 export const Content = styled.div`
+    max-height:70vh;
     overflow-x: auto;
 `;
 
 export const ReactTable = styled.table`
     width: 100%;
+    position: relative;
     border-collapse: collapse;
 `;
 

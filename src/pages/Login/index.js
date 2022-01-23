@@ -24,8 +24,13 @@ const Login = () => {
     });
 
     const handleSubmit = (values) => {
-        dispatch(loginAsync(values));
-        history.push("/dashboard");
+        dispatch(loginAsync(values)).then((res) => {
+            console.log(res);
+            if (res.payload?.isAdmin) {
+                return history.push("/dashboard");
+            }
+            return window.alert("Wrong account")
+        });
     };
 
     useEffect(() => {

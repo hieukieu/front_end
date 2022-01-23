@@ -5,7 +5,9 @@ import Button from "../../components/Button";
 import * as Yup from "yup";
 import { Content, Wrapper, ButtonLocal, Grid } from "./styles";
 import { addProductAsync } from "../../redux/productSlice";
+import { getProductsAsync } from "../../redux/productSlice";
 import { useDispatch } from "react-redux";
+import apis from "../../apis";
 
 const CreateProduct = ({ setOpenModal, setReload }) => {
     const dispatch = useDispatch();
@@ -51,8 +53,9 @@ const CreateProduct = ({ setOpenModal, setReload }) => {
         formData.append("rom", values.rom);
         formData.append("operating", values.operating);
 
-        dispatch(addProductAsync(formData));
-        setReload(1);
+        dispatch(addProductAsync(formData)).then((rea) => {
+                setReload(1);
+            });
         setOpenModal(false);
     };
     return (
