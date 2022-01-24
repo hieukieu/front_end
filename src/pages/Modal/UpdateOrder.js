@@ -49,9 +49,10 @@ const UpdateStore = ({ setOpenModal, currentObject, setReload }) => {
     const handleSubmit = (item) => {
         console.log(item);
 
-        // apis.order.updateItem({"id": item.id, "orderStatus": 6}).then((res) => {
-        //     setReload(1);
-        // });
+        apis.order.updateItem({"id": item.id, "orderStatus": item.orderStatus}).then((res) => {
+            console.log(res);
+            setReload(1);
+        });
         setOpenModal(false);
     };
     return (
@@ -128,7 +129,7 @@ const UpdateStore = ({ setOpenModal, currentObject, setReload }) => {
                     {(props) => {
                         return (
                             <Form>
-                                <FastField name='statusOrder' component={SelectField} label='Status odrer' placeholder='' options={statusData} />
+                                <FastField name='orderStatus' component={SelectField} label='Status odrer' placeholder='' options={statusData} />
                                 <Button type='submit' block>
                                     Update status
                                 </Button>

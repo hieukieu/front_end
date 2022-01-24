@@ -73,7 +73,7 @@ const Employee = () => {
             {openDetailModal && <DetailUser setOpenModal={setOpenDetailModal} data={currentObject} />}
             {openUpdateModal && <UpdateUser setOpenModal={setOpenUpdateModal} currentUser={currentObject} setReload={setReload} />}
             <Title>
-                <h1>Employees</h1>
+                <h1>Users</h1>
             </Title>
             {loading ? (
                 <Spinner />

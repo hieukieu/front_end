@@ -48,9 +48,9 @@ const Table = ({ labels, datas, hasDetail, setOpenUpdateModal, setOpenDetailModa
                         <Button style={!hasDetail ? { marginLeft: "0" } : { marginLeft: "10px" }} onClick={() => handleUpdate(row.original)}>
                             <span className='ti-pencil-alt'></span>
                         </Button>
-                        <Button onClick={() => deleteObject(row.original)}>
+                        {/* <Button onClick={() => deleteObject(row.original)}>
                             <span className='ti-trash'></span>
-                        </Button>
+                        </Button> */}
                     </>
                 ),
             },

@@ -16,8 +16,6 @@ const Overview = () => {
     const [weeklySaleInDeptLoading3, setWeeklySaleInDeptLoading3] = useState(false);
     const [weeklySaleInDeptError3, setWeeklySaleInDeptError3] = useState(false);
     const [year, setYear] = useState("2022");
-    const [year2, setYear2] = useState("2022");
-    const [year3, setYear3] = useState("2023");
 
     const yearData = [
         { value: "2022", label: "2022" },
@@ -72,20 +70,12 @@ const Overview = () => {
 
     useEffect(() => {
         getWeeklySaleInDeptData({ year: year });
-        getWeeklySaleInDeptData2({ year2: year2 });
-        getWeeklySaleInDeptData3({ year3: year3 });
 
-    }, [year, year2, year3]);
+    }, [year ]);
 
 
     const handleChangeYear = (e) => {
         setYear(e.target.value);
-    };
-    const handleChangeYear2 = (e) => {
-        setYear2(e.target.value);
-    };
-    const handleChangeYear3 = (e) => {
-        setYear3(e.target.value);
     };
 
 
@@ -125,7 +115,7 @@ const Overview = () => {
                         <p>Oops, Something went wrong!</p>
                     ) : (
                         <BarChart
-                            title={"Number of orders in " + year2}
+                            title={"Number of orders in " + year}
                             // labels={weeklySaleInDeptData}
                             datas={{
                                 label: "order",
@@ -134,12 +124,6 @@ const Overview = () => {
                             }}
                         />
                     )}
-                </div>
-                <div>
-                    <OptionField>
-                        <Title>Select year</Title>
-                        <Select datas={yearData} current={year2} handleChange={handleChangeYear2} />
-                    </OptionField>
                 </div>
             </GridTwo>
 
@@ -151,7 +135,7 @@ const Overview = () => {
                         <p>Oops, Something went wrong!</p>
                     ) : (
                         <BarChart
-                            title={"Revenue in " + year3}
+                            title={"Revenue in " + year}
                             // labels={weeklySaleInDeptData}
                             datas={{
                                 label: "VND",
@@ -160,12 +144,6 @@ const Overview = () => {
                             }}
                         />
                     )}
-                </div>
-                <div>
-                    <OptionField>
-                        <Title>Select year</Title>
-                        <Select datas={yearData} current={year3} handleChange={handleChangeYear3} />
-                    </OptionField>
                 </div>
             </GridTwo>
         </div>

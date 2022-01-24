@@ -42,9 +42,9 @@ const Sidebar = ({ match }) => {
                             </NavLink>
                         </li>
                         <li>
-                            <NavLink to={`${match.url}/employees`} activeClassName='selected'>
+                            <NavLink to={`${match.url}/users`} activeClassName='selected'>
                                 <span className='ti-user'></span>
-                                <span>Employees</span>
+                                <span>Users</span>
                             </NavLink>
                         </li>
 

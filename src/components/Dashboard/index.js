@@ -19,7 +19,7 @@ const Dashboard = () => {
                 <main>
                     <Switch>
                         <Route exact path={`${match.url}`} component={Overview} />
-                        <Route path={`${match.url}/employees`} component={Employees} />
+                        <Route path={`${match.url}/users`} component={Employees} />
                         <Route path={`${match.url}/products`} component={Products} />
                         <Route path={`${match.url}/orders`} component={Order} />
                         <Route path={`${match.url}/profile`} component={Profile} />
