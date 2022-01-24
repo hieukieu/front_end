@@ -30,6 +30,12 @@ const Sidebar = ({ match }) => {
                 <div className='sidebar-menu'>
                     <ul>
                         <li>
+                            <NavLink exact to={`${match.url}`} activeClassName='selected'>
+                                <span className='ti-home'></span>
+                                <span>Overview</span>
+                            </NavLink>
+                        </li>
+                        <li>
                             <NavLink to={`${match.url}/orders`} activeClassName='selected'>
                                 <span className='ti-shopping-cart-full'></span>
                                 <span>Orders</span>

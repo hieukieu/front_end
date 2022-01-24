@@ -5,6 +5,7 @@ import Button from "../../components/Button";
 import { Content, Wrapper, ButtonLocal, Grid } from "./styles";
 import { useDispatch } from "react-redux";
 import { updateUserAsync } from "../../redux/userSlice";
+import { ReactTable, TableBody, TableRow, TableData } from "../../components/Table/styles";
 
 const UpdateUser = ({ setOpenModal, currentUser, setReload }) => {
     const dispatch = useDispatch();
@@ -34,51 +35,52 @@ const UpdateUser = ({ setOpenModal, currentUser, setReload }) => {
                     {(props) => {
                         return (
                             <Form>
-                                <FastField
-                                    // Formik's props
-                                    name='name'
-                                    component={Input}
-                                    // Additional props
-                                    label='Full name'
-                                    type='text'
-                                    placeholder=''
-                                    disable={true}
-                                />
-
-                                <FastField
-                                    // Formik's props
-                                    name='email'
-                                    component={Input}
-                                    // Additional props
-                                    label='Email'
-                                    type='email'
-                                    placeholder=''
-                                    disable={true}
-                                />
-
-                                <FastField
-                                    // Formik's props
-                                    name='phone'
-                                    component={Input}
-                                    // Additional props
-                                    label='Phone number'
-                                    type='text'
-                                    placeholder=''
-                                    disable={true}
-                                />
-
-                                <Grid>
-                                    <FastField
-                                        // Formik's props
-                                        name='admin'
-                                        component={Input}
-                                        // Additional props
-                                        label='Admin'
-                                        type='text'
-                                        placeholder=''
-                                        disable={true}
-                                    />
-                                </Grid>
+                                <ReactTable>
+                                    <TableBody>
+                                        <TableRow>
+                                            <TableData>Full name</TableData>
+                                            <TableData>
+                                                <strong>{currentUser.name}</strong>
+                                            </TableData>
+                                        </TableRow>
+                                        <TableRow>
+                                            <TableData>Email</TableData>
+                                            <TableData>
+                                                <strong>{currentUser.email}</strong>
+                                            </TableData>
+                                        </TableRow>
+                                        <TableRow>
+                                            <TableData>Phone number</TableData>
+                                            <TableData>
+                                                <strong>{currentUser.phoneNumber}</strong>
+                                            </TableData>
+                                        </TableRow>
+                                        <TableRow>
+                                            <TableData>Address</TableData>
+                                            <TableData>
+                                                <strong>{currentUser.address}</strong>
+                                            </TableData>
+                                        </TableRow>
+                                        <TableRow>
+                                            <TableData>Position</TableData>
+                                            <TableData>
+                                                <strong>{currentUser.isAdmin ? "Admin" : "Customer"}</strong>
+                                            </TableData>
+                                        </TableRow>
+                                        <TableRow>
+                                            <TableData>Gender</TableData>
+                                            <TableData>
+                                                <strong>{currentUser.gender ? "Male" : "Female"}</strong>
+                                            </TableData>
+                                        </TableRow>
+                                        <TableRow>
+                                            <TableData>Created at</TableData>
+                                            <TableData>
+                                                <strong>{currentUser.createdAt}</strong>
+                                            </TableData>
+                                        </TableRow>
+                                    </TableBody>
+                                </ReactTable>
                                 <Button type='submit' block>
                                     Accept Admin
                                 </Button>

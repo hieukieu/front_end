@@ -5,6 +5,7 @@ import Products from "../../pages/Products";
 import Order from "../../pages/Orders";
 import Profile from "../../pages/Profile";
 import NotFound from "../../pages/NotFound";
+import Overview from "../../pages/Overview";
 import { useRouteMatch, Switch, Route } from "react-router-dom";
 import "./styles.css";
 
@@ -17,7 +18,7 @@ const Dashboard = () => {
             <div className='main-content'>
                 <main>
                     <Switch>
-                        {/* <Route exact path={`${match.url}`} component={Overview} /> */}
+                        <Route exact path={`${match.url}`} component={Overview} />
                         <Route path={`${match.url}/employees`} component={Employees} />
                         <Route path={`${match.url}/products`} component={Products} />
                         <Route path={`${match.url}/orders`} component={Order} />

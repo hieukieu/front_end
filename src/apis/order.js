@@ -12,20 +12,12 @@ const getOrders = async () => {
 const updateItem = async (payload) => {
     const datas = await api({
         method: "PUT",
-        url: "/sv_3/items/" + payload.id,
-        data: payload.data,
+        url: "/api/orders/" + payload.id + "/status",
+        data: {"orderStatus": payload.orderStatus}
     });
 
     return datas;
 };
 
-const deleteOrder = async (payload) => {
-    const datas = await api({
-        method: "DELETE",
-        url: "/sv_4/orders/" + payload,
-    });
-    return datas;
-};
 
-
-export { getOrders, updateItem, deleteOrder };
+export { getOrders, updateItem };

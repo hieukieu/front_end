@@ -17,6 +17,16 @@ const Order = () => {
     const [openUpdateModal, setOpenUpdateModal] = useState(false);
     const [currentObject, setCurrentObject] = useState({});
 
+    const statusData = [
+        {0: "Order success" },
+        {1: "Order received" },
+        {2: "Preparing goods" },
+        {3: "Shipping handover" },
+        {4: "Being transported" },
+        {5: "Delivery successful" },
+        {6: "Cancel order" },
+    ];
+
     useEffect(() => {
         const getItems = async () => {
             try {
@@ -52,6 +62,10 @@ const Order = () => {
             accessor: "numOfProd",
         },
         {
+            Header: "Status order",
+            accessor: d => Object.values(statusData[d.orderStatus]),
+        },
+        {
             Header: "Transport fee",
             accessor: "transportFee",
         },
@@ -63,7 +77,8 @@ const Order = () => {
 
     const handleDelete = (item) => {
         if (window.confirm("Order of " + item.deliveryAdd.customerName + " will be deleted!") === true) {
-            apis.order.deleteOrder(item.id).then((res) => {
+            apis.order.updateItem({"id": item.id, "orderStatus": 6}).then((res) => {
+                console.log(res);
                 setReload(1);
             });
         }
@@ -72,7 +87,7 @@ const Order = () => {
     return (
         <Wrapper>
             {openDetailModal && <DetailOrder setOpenModal={setOpenDetailModal} data={currentObject} />}
-            {openUpdateModal && <UpdateOrder setOpenModal={setOpenUpdateModal} />}
+            {openUpdateModal && <UpdateOrder setOpenModal={setOpenUpdateModal} currentObject={currentObject} setReload={setReload} />}
             <Title>
                 <h1>Orders</h1>
             </Title>

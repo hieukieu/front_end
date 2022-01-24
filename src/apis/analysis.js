@@ -1,79 +1,35 @@
 import api from "./api";
 
-const truthDepartment = async () => {
-    const datas = await api({
-        method: "GET",
-        url: "/sv_5/analysis/truth/department",
-    });
-
-    return datas;
-};
-
-const truthSize = async () => {
-    const datas = await api({
-        method: "GET",
-        url: "/sv_5/analysis/truth/size",
-    });
-
-    return datas;
-};
-
-const truthType = async () => {
-    const datas = await api({
-        method: "GET",
-        url: "/sv_5/analysis/truth/type",
-    });
-
-    return datas;
-};
-
-const weeklySaleInStore = async (payload) => {
-    const datas = await api({
-        method: "GET",
-        url: "/sv_5/analysis/truth/weeklySaleInStore",
-        params: payload,
-    });
-
-    return datas;
-};
-
 const weeklySaleInDept = async (payload) => {
     const datas = await api({
         method: "GET",
-        url: "/sv_5/analysis/truth/weeklySaleInDept",
+        url: "/api/statistic/registerUser",
         params: payload,
     });
 
     return datas;
 };
 
-const predictWeeklySaleInStore = async (payload) => {
+const weeklySaleInDept2 = async (payload) => {
     const datas = await api({
         method: "GET",
-        url: "/sv_5/analysis/predict/weeklySaleInStore",
+        url: "/api/statistic/orderSuccessMonth",
         params: payload,
     });
 
     return datas;
 };
 
-const predictWeeklySaleInDept = async (payload) => {
+
+const weeklySaleInDept3 = async (payload) => {
     const datas = await api({
         method: "GET",
-        url: "/sv_5/analysis/predict/weeklySaleInDept",
+        url: "/api/statistic/revenueMonth",
         params: payload,
     });
 
     return datas;
 };
 
-const weeklySaleInYear = async () => {
-    const datas = await api({
-        method: "GET",
-        url: "/sv_5/analysis/predict/weeklySaleInYear",
-    });
 
-    return datas;
-};
-
-export { truthDepartment, truthSize, truthType, weeklySaleInStore, weeklySaleInDept, predictWeeklySaleInStore, predictWeeklySaleInDept, weeklySaleInYear };
+export { weeklySaleInDept, weeklySaleInDept2, weeklySaleInDept3 };

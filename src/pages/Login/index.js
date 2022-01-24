@@ -26,6 +26,7 @@ const Login = () => {
     const handleSubmit = (values) => {
         dispatch(loginAsync(values)).then((res) => {
             console.log(res);
+            console.log(res.payload?.isAdmin);
             if (res.payload?.isAdmin) {
                 return history.push("/dashboard");
             }
@@ -74,21 +75,11 @@ const Login = () => {
                                 <Button type='submit' block>
                                     Login
                                 </Button>
-                                {/* <p className='bottom-text'>
-                                    By clicking the Sign Up button, you agree to our
-                                    <a href='/#'>Terms & Conditions</a> and
-                                    <a href='/#'>Privacy Policy</a>
-                                </p> */}
                             </Form>
                         );
                     }}
                 </Formik>
             </Content>
-            {/* <footer>
-                <p>
-                    Already have an account? <a href='/#'>Login here</a>
-                </p>
-            </footer> */}
         </Wrapper>
     );
 };

@@ -13,7 +13,11 @@ export const loginAsync = createAsyncThunk("login", async (payload) => {
     const res = await apis.auth.login(payload.email, payload.password);
     axiosClient.defaults.headers.common.Authorization = `Bear ${res.token}`;
 
-    sessionStorage.setItem("auth", JSON.stringify({ ...res, isAuthenticated: true}));
+    if (res.isAdmin) {
+        sessionStorage.setItem("auth", JSON.stringify({ ...res, isAuthenticated: true}));
+    } else {
+        sessionStorage.setItem("auth", JSON.stringify({ ...res, isAuthenticated: false}));
+    }
 
     return res;
 });
@@ -34,7 +38,10 @@ export const authSlice = createSlice({
     },
     extraReducers: {
         [loginAsync.fulfilled]: (state, action) => {
-            return { ...action.payload, isAuthenticated: true };
+            if (action.payload?.isAdmin) {
+                return { ...action.payload, isAuthenticated: true };
+            }
+            return { ...action.payload, isAuthenticated: false };
         },
     },
 });
